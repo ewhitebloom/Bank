@@ -23,12 +23,12 @@ class BankTransaction
  end
 
  def credit?(transaction)
-  if transaction[:amount].to_f < 0
-   false
- elsif transaction[:amount].to_f > 0
-   true
+    if transaction[:amount].to_f < 0
+     false
+   elsif transaction[:amount].to_f > 0
+     true
+   end
  end
-end
 
 def summary(account_name, bank_transactions)
   returns = []
@@ -41,7 +41,7 @@ def summary(account_name, bank_transactions)
     end
 
     if transaction[:account] == account_name.to_s
-      returns << [transaction[:amount].to_f.abs, value, transaction[:date], transaction[:description]] 
+      returns << [transaction[:amount].to_f.abs, value, transaction[:date], transaction[:description]]
     end
   end
   returns

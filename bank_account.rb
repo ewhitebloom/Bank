@@ -1,7 +1,7 @@
 class BankAccount
 
-  def initialize
-    @bank_transactions =  BankTransaction.new.balances
+  def initialize(get_bank_transactions)
+    @bank_transactions =  get_bank_transactions
   end
 
   def accounts
@@ -21,21 +21,21 @@ class BankAccount
    account[:balance]
  end
 
-  def ending_balance(account_name)
+ def ending_balance(account_name)
    ending_balance = 0
-     @bank_transactions.each do |transaction|
-       if transaction[:account] == account_name.to_s
-        ending_balance += transaction[:amount].to_f
-      end
+   @bank_transactions.each do |transaction|
+     if transaction[:account] == account_name.to_s
+      ending_balance += transaction[:amount].to_f
     end
-    ending_balance
   end
+  ending_balance
+end
 
 def summary(account_name)
   date_sorted = @bank_transactions.sort_by{ |transaction| transaction[:date]}
   date_sorted.each do |transaction|
    if transaction[:account] == account_name.to_s
-       transaction[:amount]
+     transaction[:amount]
    end
  end
 end

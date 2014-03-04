@@ -9,15 +9,13 @@ end
 def feedback(account_name)
   balances = BankTransaction.new.balances
   puts "===== #{account_name} ======"
-  puts "Starting Balance: $" + format_currency(BankAccount.new.starting_balance("#{account_name}")).to_s
-  puts "Ending Balance: $" +  format_currency(BankAccount.new.ending_balance("#{account_name}")).to_s
-  puts
+  puts "Starting Balance: $" + format_currency(BankAccount.new(BankTransaction.new.balances).starting_balance("#{account_name}")).to_s
+  puts "Ending Balance: $" +  format_currency(BankAccount.new(BankTransaction.new.balances).ending_balance("#{account_name}")).to_s + "\n"
   return_data = BankTransaction.new.summary(account_name.to_s, balances)
   return_data.each do |transaction|
     puts "$#{format_currency(transaction[0])} #{transaction[1]} #{transaction[2]} - #{transaction[3]}"
   end
-  puts
-  puts "======"
+  puts "\n======"
 end
 
 feedback("Purchasing Account")

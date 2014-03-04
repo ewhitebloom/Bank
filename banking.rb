@@ -14,7 +14,7 @@ def feedback(account_name, transactions)
   return_data.each do |transaction|
     puts "$#{format_currency(transaction[0])} #{transaction[1]} #{transaction[2]} - #{transaction[3]}"
   end
-  puts "\n======"
+  puts "\n==========================================\n\n"
 end
 
 transactions = BankTransaction.new.balances('balances.csv')

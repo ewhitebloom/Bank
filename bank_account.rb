@@ -29,7 +29,7 @@ class BankAccount
     end
   end
   ending_balance
-end
+ end
 
 def summary(account_name)
   date_sorted = @bank_transactions.sort_by{ |transaction| transaction[:date]}

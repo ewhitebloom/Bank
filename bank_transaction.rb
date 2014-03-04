@@ -1,6 +1,6 @@
 class BankTransaction
 
-  def  balances
+  def  balances(bank_data_csv_file)
     counter = 0
     transactions = []
     CSV.foreach('bank_data.csv', headers: true) do |row|

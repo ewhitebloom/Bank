@@ -7,10 +7,10 @@ def format_currency(currency)
 end
 
 def feedback(account_name)
-  balances = BankTransaction.new.balances
+  balances = BankTransaction.new.balances('balances.csv')
   puts "===== #{account_name} ======"
-  puts "Starting Balance: $" + format_currency(BankAccount.new(BankTransaction.new.balances).starting_balance("#{account_name}")).to_s
-  puts "Ending Balance: $" +  format_currency(BankAccount.new(BankTransaction.new.balances).ending_balance("#{account_name}")).to_s + "\n"
+  puts "Starting Balance: $" + format_currency(BankAccount.new(balances).starting_balance("#{account_name}")).to_s
+  puts "Ending Balance: $" +  format_currency(BankAccount.new(balances).ending_balance("#{account_name}")).to_s + "\n"
   return_data = BankTransaction.new.summary(account_name.to_s, balances)
   return_data.each do |transaction|
     puts "$#{format_currency(transaction[0])} #{transaction[1]} #{transaction[2]} - #{transaction[3]}"

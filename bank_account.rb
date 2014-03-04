@@ -19,7 +19,7 @@ class BankAccount
   def starting_balance(account_name)
    account = accounts.find{ |account| account[:account] == account_name.to_s}
    account[:balance]
- end
+  end
 
  def ending_balance(account_name)
    ending_balance = 0

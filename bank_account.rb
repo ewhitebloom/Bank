@@ -1,13 +1,14 @@
 class BankAccount
 
-  def initialize(get_bank_transactions)
+  def initialize(get_bank_transactions, accounts_file )
     @bank_transactions =  get_bank_transactions
+    @accounts_file = accounts_file
   end
 
   def accounts
     counter = 0
     accounts = []
-    CSV.foreach('balances.csv', headers: true) do |row|
+    CSV.foreach( @accounts_file, headers: true) do |row|
       accounts[counter] = {}
       accounts[counter][:account] = "#{row[0]}"
       accounts[counter][:balance] = "#{row[1]}"

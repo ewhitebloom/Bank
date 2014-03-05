@@ -15,19 +15,11 @@ class BankTransaction
   end
 
   def debit?(transaction)
-    if transaction[:amount].to_f > 0
-     false
-   elsif transaction[:amount].to_f < 0
-     true
-   end
+    transaction[:amount].to_f < 0
   end
 
   def credit?(transaction)
-    if transaction[:amount].to_f < 0
-     false
-   elsif transaction[:amount].to_f > 0
-     true
-   end
+    transaction[:amount].to_f > 0
   end
 
   def summary(account_name, bank_transactions)
